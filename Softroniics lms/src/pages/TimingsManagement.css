@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+.tmg-mgmt-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #f8f9fa;
+  padding: 24px 32px 32px 32px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.tmg-mgmt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.tmg-mgmt-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tmg-mgmt-heading {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.tmg-mgmt-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.tmg-mgmt-breadcrumb-separator {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.tmg-mgmt-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.tmg-mgmt-profile-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  font-size: 18px;
+}
+
+.tmg-mgmt-profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.tmg-mgmt-username {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.tmg-mgmt-role {
+  font-size: 12px;
+  font-weight: 400;
+  color: #6b7280;
+  line-height: 1.2;
+}
+
+/* Outer Toolbar */
+.tmg-mgmt-toolbar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.tmg-mgmt-tab-group {
+  display: inline-flex;
+  gap: 10px;
+}
+
+.tmg-mgmt-tab-btn {
+  height: 40px;
+  padding: 0 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.tmg-mgmt-tab-btn:hover {
+  background-color: #f9fafb;
+}
+
+.tmg-mgmt-tab-btn--active {
+  background-color: #f97316;
+  border-color: #f97316;
+  color: #ffffff;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 3.5px #f97316;
+}
+
+/* Main White Card */
+.tmg-mgmt-panel {
+  background-color: #ffffff;
+  border: 1px solid #eef0f2;
+  border-radius: 14px;
+  padding: 24px 28px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  box-sizing: border-box;
+}
+
+/* Added Timings Top Bar */
+.tmg-mgmt-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.tmg-mgmt-section-heading {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.tmg-mgmt-branch-filter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tmg-mgmt-filter-label {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.tmg-mgmt-select-wrapper {
+  position: relative;
+  min-width: 150px;
+}
+
+.tmg-mgmt-select-input {
+  width: 100%;
+  height: 38px;
+  box-sizing: border-box;
+  padding: 0 34px 0 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13.5px;
+  color: #111827;
+  background-color: #ffffff;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.tmg-mgmt-select-input--form {
+  height: 42px;
+  background-color: #f3f4f6;
+  border-color: #e5e7eb;
+}
+
+.tmg-mgmt-select-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 15px;
+  color: #4b5563;
+  pointer-events: none;
+}
+
+/* Timing Pills Grid (Matching Screenshot 4) */
+.tmg-mgmt-pills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tmg-mgmt-timing-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 36px;
+  padding: 0 16px;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.tmg-mgmt-pill-edit-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.tmg-mgmt-pill-edit-btn:hover {
+  color: #111827;
+}
+
+.tmg-mgmt-empty-text {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 12px 0;
+}
+
+/* New / Edit Timing Form (Matching Screenshot 5) */
+.tmg-mgmt-form-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 24px;
+}
+
+.tmg-mgmt-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tmg-mgmt-label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.tmg-mgmt-required-star {
+  color: #ef4444;
+  margin-left: 2px;
+}
+
+.tmg-mgmt-time-input {
+  width: 100%;
+  height: 42px;
+  box-sizing: border-box;
+  padding: 0 14px;
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #111827;
+  outline: none;
+}
+
+.tmg-mgmt-time-input:focus {
+  border-color: #f97316;
+  background-color: #ffffff;
+}
+
+.tmg-mgmt-form-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+}
+
+.tmg-mgmt-cancel-btn {
+  height: 40px;
+  padding: 0 22px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+}
+
+.tmg-mgmt-cancel-btn:hover {
+  background-color: #f9fafb;
+}
+
+.tmg-mgmt-submit-btn {
+  height: 40px;
+  padding: 0 22px;
+  background-color: #f59e0b;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.tmg-mgmt-submit-btn:hover {
+  background-color: #d97706;
+}
+
+@media (max-width: 768px) {
+  .tmg-mgmt-container {
+    padding: 16px;
+  }
+
+  .tmg-mgmt-list-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .tmg-mgmt-form-row {
+    grid-template-columns: 1fr;
+  }
+}
