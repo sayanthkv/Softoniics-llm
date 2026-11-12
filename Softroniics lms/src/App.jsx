@@ -3,15 +3,19 @@ import ModuleManagement from './pages/ModuleManagement';
 import TopicManagement from './pages/TopicsManagement';
 import BatchManagement from './pages/BatchManagement';
 import TimingsManagement from './pages/TimingsManagement';
+import WeeklySchedule from './pages/WeeklySchedule';
+import MentorBatches from './pages/MentorBatches';
 
 function App() {
-  const [currentSection, setCurrentSection] = useState('batches');
+  const [currentSection, setCurrentSection] = useState('weekly-schedule');
 
   const navItems = [
     { key: 'modules', label: 'Modules' },
     { key: 'topics', label: 'Topics' },
     { key: 'batches', label: 'Batches' },
     { key: 'timings', label: 'Timings' },
+    { key: 'weekly-schedule', label: 'Weekly Schedule' },
+    { key: 'mentor-batches', label: 'Mentor Batches' },
   ];
 
   return (
@@ -23,6 +27,7 @@ function App() {
           right: '20px',
           zIndex: 9999,
           display: 'flex',
+          flexWrap: 'wrap',
           gap: '8px',
           padding: '6px',
           borderRadius: '10px',
@@ -56,6 +61,8 @@ function App() {
       {currentSection === 'topics' && <TopicManagement />}
       {currentSection === 'batches' && <BatchManagement />}
       {currentSection === 'timings' && <TimingsManagement />}
+      {currentSection === 'weekly-schedule' && <WeeklySchedule />}
+      {currentSection === 'mentor-batches' && <MentorBatches />}
     </div>
   );
 }

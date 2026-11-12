@@ -1,0 +1,610 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+.mnt-btc-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #f8f9fa;
+  padding: 24px 32px 32px 32px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Header & Breadcrumbs */
+.mnt-btc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.mnt-btc-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mnt-btc-heading {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.mnt-btc-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.mnt-btc-breadcrumb-separator {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+/* Profile Card */
+.mnt-btc-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.mnt-btc-profile-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  font-size: 18px;
+}
+
+.mnt-btc-profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.mnt-btc-username {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.mnt-btc-role {
+  font-size: 12px;
+  font-weight: 400;
+  color: #6b7280;
+  line-height: 1.2;
+}
+
+/* Top Filter Bar Card (Select Mentor Schedule) */
+.mnt-btc-selector-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  background-color: #ffffff;
+  border: 1px solid #eef0f2;
+  border-radius: 14px;
+  padding: 18px 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.mnt-btc-selector-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mnt-btc-selector-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #fff7ed;
+  color: #f97316;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.mnt-btc-selector-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 2px 0;
+}
+
+.mnt-btc-selector-sub {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.mnt-btc-selector-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.mnt-btc-date-input {
+  height: 38px;
+  box-sizing: border-box;
+  padding: 0 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #374151;
+  background-color: #ffffff;
+  outline: none;
+}
+
+.mnt-btc-to-pill {
+  display: inline-flex;
+  align-items: center;
+  height: 38px;
+  padding: 0 14px;
+  background-color: #fff7ed;
+  border: 1px solid #ffedd5;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #ea580c;
+}
+
+.mnt-btc-select-wrapper {
+  position: relative;
+  min-width: 145px;
+}
+
+.mnt-btc-select-wrapper--mentor {
+  min-width: 190px;
+}
+
+.mnt-btc-select {
+  width: 100%;
+  height: 38px;
+  box-sizing: border-box;
+  padding: 0 32px 0 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #111827;
+  background-color: #ffffff;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.mnt-btc-select-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #6b7280;
+  pointer-events: none;
+}
+
+.mnt-btc-download-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  color: #4b5563;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.mnt-btc-download-btn:hover {
+  background-color: #f9fafb;
+}
+
+/* Main Content 2-Column Layout */
+.mnt-btc-grid {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.mnt-btc-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mnt-btc-card {
+  background-color: #ffffff;
+  border: 1px solid #eef0f2;
+  border-radius: 14px;
+  padding: 22px 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  box-sizing: border-box;
+}
+
+/* Mentor Overview Card */
+.mnt-btc-mentor-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.mnt-btc-mentor-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background-color: #fff7ed;
+  border: 1px solid #ffedd5;
+  color: #f97316;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.mnt-btc-role-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background-color: #dcfce7;
+  color: #16a34a;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.mnt-btc-mentor-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 2px 0;
+}
+
+.mnt-btc-mentor-email {
+  font-size: 12.5px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.mnt-btc-assigned-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #9ca3af;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.mnt-btc-branch-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background-color: #eff6ff;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.mnt-btc-branch-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #2563eb;
+}
+
+.mnt-btc-stats-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.mnt-btc-stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 10px;
+  border: 1px solid #f3f4f6;
+  border-radius: 10px;
+  background-color: #fafafa;
+}
+
+.mnt-btc-stat-num {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.mnt-btc-stat-num--blue {
+  color: #2563eb;
+}
+
+.mnt-btc-stat-num--green {
+  color: #16a34a;
+}
+
+.mnt-btc-stat-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #6b7280;
+  letter-spacing: 0.04em;
+}
+
+/* Assigned Batches List Card (Matching Screenshot 3) */
+.mnt-btc-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.mnt-btc-card-header-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: #eff6ff;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.mnt-btc-card-header-icon--green {
+  background-color: #ecfdf5;
+  color: #16a34a;
+}
+
+.mnt-btc-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.mnt-btc-assigned-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mnt-btc-assigned-item {
+  border: 1px solid #f3f4f6;
+  border-radius: 10px;
+  padding: 14px 16px;
+  background-color: #ffffff;
+}
+
+.mnt-btc-assigned-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.mnt-btc-assigned-batch-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.mnt-btc-assigned-badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.mnt-btc-today-pill {
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background-color: #ffedd5;
+  color: #ea580c;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.mnt-btc-days-pill {
+  padding: 3px 9px;
+  border-radius: 6px;
+  background-color: #eff6ff;
+  color: #2563eb;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.mnt-btc-branch-mini-pill {
+  padding: 3px 9px;
+  border-radius: 6px;
+  background-color: #f3e8ff;
+  color: #7e22ce;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.mnt-btc-assigned-course-sub {
+  font-size: 11.5px;
+  color: #6b7280;
+}
+
+/* Right Column: Weekly Schedule Timeline */
+.mnt-btc-timeline-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 12px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.mnt-btc-slot-group {
+  position: relative;
+  padding-left: 22px;
+  border-left: 2px solid #e5e7eb;
+}
+
+.mnt-btc-slot-dot {
+  position: absolute;
+  left: -6px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #16a34a;
+  border: 2px solid #ffffff;
+}
+
+.mnt-btc-slot-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background-color: #dcfce7;
+  color: #15803d;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.mnt-btc-day-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mnt-btc-day-card {
+  border: 1px solid #eef0f2;
+  border-radius: 10px;
+  padding: 14px 16px;
+  background-color: #ffffff;
+}
+
+.mnt-btc-day-card--inactive {
+  background-color: #fafafa;
+}
+
+.mnt-btc-day-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.mnt-btc-day-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mnt-btc-day-badge {
+  padding: 3px 9px;
+  border-radius: 6px;
+  background-color: #f3f4f6;
+  color: #374151;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.mnt-btc-active-status {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.mnt-btc-no-batch-status {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #9ca3af;
+}
+
+.mnt-btc-day-batch-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.mnt-btc-batch-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.mnt-btc-batch-tag-branch {
+  font-weight: 500;
+  color: #60a5fa;
+}
+
+.mnt-btc-subject-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background-color: #fff7ed;
+  border: 1px solid #ffedd5;
+  color: #c2410c;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.mnt-btc-inactive-text {
+  font-size: 12.5px;
+  font-style: italic;
+  color: #9ca3af;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .mnt-btc-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .mnt-btc-container {
+    padding: 16px;
+  }
+
+  .mnt-btc-selector-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
