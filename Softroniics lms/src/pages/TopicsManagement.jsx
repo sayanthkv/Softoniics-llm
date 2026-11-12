@@ -1,43 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import './TopicManagement.css';
-import { LuUser, LuEye, LuTrash2 } from 'react-icons/lu';
-import { HiOutlineArrowUpTray } from 'react-icons/hi2';
-import { FiChevronDown, FiEdit, FiChevronLeft, FiChevronRight, FiArrowLeft } from 'react-icons/fi';
+import { LuUser, LuSearch } from 'react-icons/lu';
+import { HiOutlineArrowDownTray } from 'react-icons/hi2';
+import { FiChevronDown, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 const TopicManagement = () => {
-  const [activeTab, setActiveTab] = useState('topics');
-  const [selectedTopic, setSelectedTopic] = useState(null);
+  const [activeTab, setActiveTab] = useState('topics'); // 'topics' | 'new-topic' | 'edit-topic'
+  const [viewingTopic, setViewingTopic] = useState(null);
   const [editingTopicId, setEditingTopicId] = useState(null);
 
+  // Search & Filter states
+  const [searchQuery, setSearchQuery] = useState('');
+  const [moduleFilter, setModuleFilter] = useState('All Modules');
+
+  // Form states
   const [formTopicName, setFormTopicName] = useState('');
-  const [formTopicCode, setFormTopicCode] = useState('');
   const [formModule, setFormModule] = useState('');
 
-  const [topics, setTopics] = useState([
-    {
-      id: 1,
-      code: 'T11',
-      name: 'Auto Layout',
-      module: 'Figma',
-    },
-  ]);
+  // Starts empty to match Screenshot 1; adding a topic populates the table
+  const [topics, setTopics] = useState([]);
+
+  const availableModules = [
+    'PYTHON',
+    'MONGODB',
+    'NODE AND EXPRESS',
+    'REACT',
+    'FIGMA',
+  ];
+
+  const filteredTopics = useMemo(() => {
+    return topics.filter((topic) => {
+      const matchesSearch = topic.name
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase().trim());
+      const matchesModule =
+        moduleFilter === 'All Modules' || topic.module === moduleFilter;
+      return matchesSearch && matchesModule;
+    });
+  }, [topics, searchQuery, moduleFilter]);
 
   const resetForm = () => {
     setFormTopicName('');
-    setFormTopicCode('');
     setFormModule('');
     setEditingTopicId(null);
   };
 
   const handleOpenNewTopic = () => {
     resetForm();
-    setSelectedTopic(null);
+    setViewingTopic(null);
     setActiveTab('new-topic');
   };
 
   const handleBackToTopics = () => {
     resetForm();
-    setSelectedTopic(null);
+    setViewingTopic(null);
     setActiveTab('topics');
   };
 
@@ -45,28 +61,30 @@ const TopicManagement = () => {
     e.preventDefault();
     if (!formTopicName.trim() || !formModule) return;
 
+    const today = new Date();
+    const formattedDate = `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`;
+
     const newTopic = {
       id: Date.now(),
       code: `T${topics.length + 11}`,
-      name: formTopicName.trim(),
+      name: formTopicName.trim().toUpperCase(),
       module: formModule,
+      createdAt: formattedDate,
     };
 
-    setTopics((prev) => [...prev, newTopic]);
+    setTopics((prev) => [newTopic, ...prev]);
     handleBackToTopics();
   };
 
   const handleViewTopic = (topicItem) => {
-    setSelectedTopic(topicItem);
-    setActiveTab('view-topic');
+    setViewingTopic(topicItem);
   };
 
   const handleOpenEditTopic = (topicItem) => {
+    setViewingTopic(null);
     setEditingTopicId(topicItem.id);
     setFormTopicName(topicItem.name);
-    setFormTopicCode(topicItem.code);
     setFormModule(topicItem.module);
-    setSelectedTopic(topicItem);
     setActiveTab('edit-topic');
   };
 
@@ -79,7 +97,7 @@ const TopicManagement = () => {
         t.id === editingTopicId
           ? {
               ...t,
-              name: formTopicName.trim(),
+              name: formTopicName.trim().toUpperCase(),
               module: formModule,
             }
           : t
@@ -91,141 +109,204 @@ const TopicManagement = () => {
 
   const handleDeleteTopic = (id) => {
     setTopics((prev) => prev.filter((t) => t.id !== id));
-    if (selectedTopic && selectedTopic.id === id) {
-      handleBackToTopics();
+    if (viewingTopic && viewingTopic.id === id) {
+      setViewingTopic(null);
     }
   };
 
   return (
     <div className="tpc-mgmt-container">
+      {/* Header */}
       <header className="tpc-mgmt-header">
         <div className="tpc-mgmt-title-group">
-          <h1 className="tpc-mgmt-heading">Syllabus Management</h1>
+          <h1 className="tpc-mgmt-heading">Topics Management</h1>
           <nav className="tpc-mgmt-breadcrumb">
-            <span>Syllabus management</span>
+            <span>Topics Management</span>
             <span className="tpc-mgmt-breadcrumb-separator">&gt;</span>
-            <span className="tpc-mgmt-breadcrumb-segment">Topics</span>
-            {activeTab !== 'topics' && (
-              <>
-                <span className="tpc-mgmt-breadcrumb-separator">&gt;</span>
-                <span className="tpc-mgmt-breadcrumb-current">Add Topics</span>
-              </>
-            )}
+            <span>
+              {activeTab === 'topics' && 'topics-list'}
+              {activeTab === 'new-topic' && 'new-topic'}
+              {activeTab === 'edit-topic' && 'edit-topic'}
+            </span>
           </nav>
         </div>
 
         <div className="tpc-mgmt-profile-card">
-          <LuUser className="tpc-mgmt-profile-icon" />
+          <div className="tpc-mgmt-profile-avatar">
+            <LuUser />
+          </div>
           <div className="tpc-mgmt-profile-info">
-            <span className="tpc-mgmt-username">Priyesh</span>
-            <span className="tpc-mgmt-role">Super Admin</span>
+            <span className="tpc-mgmt-username">vijitha</span>
+            <span className="tpc-mgmt-role">super admin</span>
           </div>
         </div>
       </header>
 
+      {/* Outer Toolbar (Matches Screenshot 1 & 2) */}
+      <div className="tpc-mgmt-toolbar">
+        <div className="tpc-mgmt-tab-group">
+          <button
+            type="button"
+            className={`tpc-mgmt-tab-btn ${activeTab === 'topics' ? 'tpc-mgmt-tab-btn--active' : ''}`}
+            onClick={handleBackToTopics}
+          >
+            Topics List
+          </button>
+          <button
+            type="button"
+            className={`tpc-mgmt-tab-btn ${
+              activeTab === 'new-topic' || activeTab === 'edit-topic'
+                ? 'tpc-mgmt-tab-btn--active'
+                : ''
+            }`}
+            onClick={handleOpenNewTopic}
+          >
+            {activeTab === 'edit-topic' ? 'Edit Topic' : 'New Topic'}
+          </button>
+        </div>
+
+        <button type="button" className="tpc-mgmt-export-btn">
+          <HiOutlineArrowDownTray className="tpc-mgmt-export-icon" />
+          <span>Export</span>
+        </button>
+      </div>
+
+      {/* Main White Card Container */}
       <main className="tpc-mgmt-panel">
-        {activeTab !== 'view-topic' && activeTab !== 'edit-topic' && (
-          <div className="tpc-mgmt-toolbar">
-            <div className="tpc-mgmt-tab-group">
-              <button
-                type="button"
-                className={`tpc-mgmt-tab-btn ${activeTab === 'topics' ? 'tpc-mgmt-tab-btn--active' : ''}`}
-                onClick={handleBackToTopics}
-              >
-                Topics
-              </button>
-              <button
-                type="button"
-                className={`tpc-mgmt-tab-btn ${activeTab === 'new-topic' ? 'tpc-mgmt-tab-btn--active' : ''}`}
-                onClick={handleOpenNewTopic}
-              >
-                New Topic
-              </button>
-            </div>
-
-            {activeTab === 'topics' && (
-              <button type="button" className="tpc-mgmt-export-btn">
-                <span>Export</span>
-                <HiOutlineArrowUpTray className="tpc-mgmt-export-icon" />
-              </button>
-            )}
-          </div>
-        )}
-
+        {/* TOPICS LIST & EMPTY STATE (Matches Screenshot 1) */}
         {activeTab === 'topics' && (
-          topics.length === 0 ? (
-            <div className="tpc-mgmt-content-area">
-              <p className="tpc-mgmt-empty-message">
-                No data available. Please add Category to view them here
-              </p>
+          <>
+            <div className="tpc-mgmt-filter-bar">
+              <div className="tpc-mgmt-search-wrapper">
+                <LuSearch className="tpc-mgmt-search-icon" />
+                <input
+                  type="text"
+                  className="tpc-mgmt-search-input"
+                  placeholder="Search Topics"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+              </div>
+
+              <div className="tpc-mgmt-filter-select-wrapper">
+                <select
+                  className="tpc-mgmt-filter-select"
+                  value={moduleFilter}
+                  onChange={(e) => setModuleFilter(e.target.value)}
+                >
+                  <option value="All Modules">All Modules</option>
+                  {availableModules.map((mod) => (
+                    <option key={mod} value={mod}>
+                      {mod}
+                    </option>
+                  ))}
+                </select>
+                <FiChevronDown className="tpc-mgmt-select-arrow" />
+              </div>
             </div>
-          ) : (
-            <div className="tpc-mgmt-table-wrapper">
-              <div className="tpc-mgmt-table-card">
+
+            {filteredTopics.length === 0 ? (
+              <div className="tpc-mgmt-content-area">
+                <p className="tpc-mgmt-empty-message">
+                  No topics available. Please add topics to view them here.
+                </p>
+              </div>
+            ) : (
+              <div className="tpc-mgmt-table-wrapper">
                 <div className="tpc-mgmt-table-header-row">
-                  <div className="tpc-mgmt-th tpc-mgmt-col-code">Topic Code</div>
-                  <div className="tpc-mgmt-th tpc-mgmt-col-name">Topic Name</div>
-                  <div className="tpc-mgmt-th tpc-mgmt-col-module">Module</div>
-                  <div className="tpc-mgmt-th tpc-mgmt-col-actions">Actions</div>
+                  <div className="tpc-mgmt-th">#</div>
+                  <div className="tpc-mgmt-th">TOPIC NAME</div>
+                  <div className="tpc-mgmt-th tpc-mgmt-th-center">MODULE</div>
+                  <div className="tpc-mgmt-th tpc-mgmt-th-center">TOPIC CODE</div>
+                  <div className="tpc-mgmt-th tpc-mgmt-th-center">CREATED</div>
+                  <div className="tpc-mgmt-th tpc-mgmt-th-center">ACTIONS</div>
                 </div>
 
                 <div className="tpc-mgmt-table-body">
-                  {topics.map((item) => (
+                  {filteredTopics.map((item, idx) => (
                     <div key={item.id} className="tpc-mgmt-table-row">
-                      <div className="tpc-mgmt-td tpc-mgmt-col-code" data-label="Topic Code">{item.code}</div>
-                      <div className="tpc-mgmt-td tpc-mgmt-col-name" data-label="Topic Name">{item.name}</div>
-                      <div className="tpc-mgmt-td tpc-mgmt-col-module" data-label="Module">{item.module}</div>
+                      <div className="tpc-mgmt-td" data-label="#">
+                        {idx + 1}
+                      </div>
+
+                      <div className="tpc-mgmt-td" data-label="Topic Name">
+                        <div className="tpc-mgmt-topic-cell">
+                          <span className="tpc-mgmt-topic-avatar">
+                            {item.name.charAt(0).toUpperCase()}
+                          </span>
+                          <span className="tpc-mgmt-topic-name-text">{item.name}</span>
+                        </div>
+                      </div>
+
+                      <div className="tpc-mgmt-td tpc-mgmt-td-center" data-label="Module">
+                        <span className="tpc-mgmt-module-pill">{item.module}</span>
+                      </div>
+
+                      <div className="tpc-mgmt-td tpc-mgmt-td-center" data-label="Topic Code">
+                        <span className="tpc-mgmt-code-badge">{item.code}</span>
+                      </div>
+
+                      <div className="tpc-mgmt-td tpc-mgmt-td-center" data-label="Created">
+                        <span className="tpc-mgmt-date-text">{item.createdAt}</span>
+                      </div>
+
                       <div className="tpc-mgmt-td tpc-mgmt-col-actions" data-label="Actions">
                         <button
                           type="button"
-                          className="tpc-mgmt-action-btn tpc-mgmt-action-view"
+                          className="tpc-mgmt-text-action tpc-mgmt-text-action--view"
                           onClick={() => handleViewTopic(item)}
                         >
-                          <LuEye />
+                          View
                         </button>
                         <button
                           type="button"
-                          className="tpc-mgmt-action-btn tpc-mgmt-action-edit"
+                          className="tpc-mgmt-text-action tpc-mgmt-text-action--edit"
                           onClick={() => handleOpenEditTopic(item)}
                         >
-                          <FiEdit />
+                          Edit
                         </button>
                         <button
                           type="button"
-                          className="tpc-mgmt-action-btn tpc-mgmt-action-delete"
+                          className="tpc-mgmt-text-action tpc-mgmt-text-action--delete"
                           onClick={() => handleDeleteTopic(item.id)}
                         >
-                          <LuTrash2 />
+                          Delete
                         </button>
                       </div>
                     </div>
                   ))}
                 </div>
-              </div>
 
-              <div className="tpc-mgmt-pagination-bar">
-                <span className="tpc-mgmt-pagination-text">1 of 1</span>
-                <div className="tpc-mgmt-pagination-controls">
-                  <button type="button" className="tpc-mgmt-page-btn" disabled>
-                    <FiChevronLeft />
-                  </button>
-                  <button type="button" className="tpc-mgmt-page-btn" disabled>
-                    <FiChevronRight />
-                  </button>
+                <div className="tpc-mgmt-pagination-bar">
+                  <span className="tpc-mgmt-pagination-text">1 of 1</span>
+                  <div className="tpc-mgmt-pagination-controls">
+                    <button type="button" className="tpc-mgmt-page-btn" disabled>
+                      <FiChevronLeft />
+                    </button>
+                    <button type="button" className="tpc-mgmt-page-btn" disabled>
+                      <FiChevronRight />
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          )
+            )}
+          </>
         )}
 
-        {activeTab === 'new-topic' && (
-          <form className="tpc-mgmt-form-layout" onSubmit={handleCreateTopic}>
+        {/* NEW TOPIC & EDIT TOPIC FORM (Matches Screenshot 2) */}
+        {(activeTab === 'new-topic' || activeTab === 'edit-topic') && (
+          <form
+            className="tpc-mgmt-form-layout"
+            onSubmit={activeTab === 'new-topic' ? handleCreateTopic : handleSaveEditedTopic}
+          >
             <div className="tpc-mgmt-form-body">
               <h2 className="tpc-mgmt-section-heading">Topic Details</h2>
 
               <div className="tpc-mgmt-form-row">
                 <div className="tpc-mgmt-input-group">
-                  <label className="tpc-mgmt-label">Topic Name</label>
+                  <label className="tpc-mgmt-label">
+                    Topic Name<span className="tpc-mgmt-required-star">*</span>
+                  </label>
                   <input
                     type="text"
                     className="tpc-mgmt-text-input"
@@ -237,7 +318,9 @@ const TopicManagement = () => {
                 </div>
 
                 <div className="tpc-mgmt-input-group">
-                  <label className="tpc-mgmt-label">Module</label>
+                  <label className="tpc-mgmt-label">
+                    Module<span className="tpc-mgmt-required-star">*</span>
+                  </label>
                   <div className="tpc-mgmt-select-wrapper">
                     <select
                       className="tpc-mgmt-select-input"
@@ -245,11 +328,14 @@ const TopicManagement = () => {
                       onChange={(e) => setFormModule(e.target.value)}
                       required
                     >
-                      <option value="" disabled>Choose Module</option>
-                      <option value="Figma">Figma</option>
-                      <option value="HTML & CSS">HTML & CSS</option>
-                      <option value="React.js">React.js</option>
-                      <option value="Node.js">Node.js</option>
+                      <option value="" disabled>
+                        Choose Module
+                      </option>
+                      {availableModules.map((mod) => (
+                        <option key={mod} value={mod}>
+                          {mod}
+                        </option>
+                      ))}
                     </select>
                     <FiChevronDown className="tpc-mgmt-select-arrow" />
                   </div>
@@ -265,148 +351,76 @@ const TopicManagement = () => {
               >
                 Cancel
               </button>
-              <button
-                type="submit"
-                className="tpc-mgmt-submit-btn"
-              >
-                Create Topic
-              </button>
-            </div>
-          </form>
-        )}
-
-        {activeTab === 'view-topic' && selectedTopic && (
-          <div className="tpc-mgmt-view-layout">
-            <div className="tpc-mgmt-view-topbar">
-              <h2 className="tpc-mgmt-view-title">{selectedTopic.name}</h2>
-              <button
-                type="button"
-                className="tpc-mgmt-back-btn"
-                onClick={handleBackToTopics}
-              >
-                <FiArrowLeft className="tpc-mgmt-back-icon" />
-                <span>Back</span>
-              </button>
-            </div>
-
-            <div className="tpc-mgmt-form-body">
-              <h3 className="tpc-mgmt-section-heading">Topic Details</h3>
-
-              <div className="tpc-mgmt-form-row-view">
-                <div className="tpc-mgmt-input-group">
-                  <label className="tpc-mgmt-label">Topic Name</label>
-                  <div className="tpc-mgmt-static-box">{selectedTopic.name}</div>
-                </div>
-
-                <div className="tpc-mgmt-input-group">
-                  <label className="tpc-mgmt-label">Topic Code</label>
-                  <div className="tpc-mgmt-static-box">{selectedTopic.code}</div>
-                </div>
-
-                <div className="tpc-mgmt-input-group">
-                  <label className="tpc-mgmt-label">Module</label>
-                  <div className="tpc-mgmt-static-box">{selectedTopic.module}</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="tpc-mgmt-form-footer">
-              <button
-                type="button"
-                className="tpc-mgmt-cancel-btn"
-                onClick={handleBackToTopics}
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                className="tpc-mgmt-submit-btn"
-                onClick={() => handleOpenEditTopic(selectedTopic)}
-              >
-                Edit Topic
-              </button>
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'edit-topic' && (
-          <form className="tpc-mgmt-view-layout" onSubmit={handleSaveEditedTopic}>
-            <div className="tpc-mgmt-view-topbar">
-              <h2 className="tpc-mgmt-view-title">{formTopicName || 'Edit Topic'}</h2>
-              <button
-                type="button"
-                className="tpc-mgmt-back-btn"
-                onClick={handleBackToTopics}
-              >
-                <FiArrowLeft className="tpc-mgmt-back-icon" />
-                <span>Back</span>
-              </button>
-            </div>
-
-            <div className="tpc-mgmt-form-body">
-              <h3 className="tpc-mgmt-section-heading">Topic Details</h3>
-
-              <div className="tpc-mgmt-form-row-view">
-                <div className="tpc-mgmt-input-group">
-                  <label className="tpc-mgmt-label">Topic Name</label>
-                  <input
-                    type="text"
-                    className="tpc-mgmt-text-input"
-                    value={formTopicName}
-                    onChange={(e) => setFormTopicName(e.target.value)}
-                    required
-                  />
-                </div>
-
-                <div className="tpc-mgmt-input-group">
-                  <label className="tpc-mgmt-label">Topic Code</label>
-                  <input
-                    type="text"
-                    className="tpc-mgmt-text-input tpc-mgmt-text-input--disabled"
-                    value={formTopicCode}
-                    readOnly
-                  />
-                </div>
-
-                <div className="tpc-mgmt-input-group">
-                  <label className="tpc-mgmt-label">Module</label>
-                  <div className="tpc-mgmt-select-wrapper">
-                    <select
-                      className="tpc-mgmt-select-input"
-                      value={formModule}
-                      onChange={(e) => setFormModule(e.target.value)}
-                      required
-                    >
-                      <option value="" disabled>Choose Module</option>
-                      <option value="Figma">Figma</option>
-                      <option value="HTML & CSS">HTML & CSS</option>
-                      <option value="React.js">React.js</option>
-                      <option value="Node.js">Node.js</option>
-                    </select>
-                    <FiChevronDown className="tpc-mgmt-select-arrow" />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="tpc-mgmt-form-footer">
-              <button
-                type="button"
-                className="tpc-mgmt-cancel-btn"
-                onClick={handleBackToTopics}
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                className="tpc-mgmt-submit-btn"
-              >
-                Save Topic
+              <button type="submit" className="tpc-mgmt-submit-btn">
+                {activeTab === 'new-topic' ? 'Create Topic' : 'Save Changes'}
               </button>
             </div>
           </form>
         )}
       </main>
+
+      {/* VIEW TOPIC MODAL */}
+      {viewingTopic && (
+        <div
+          className="tpc-mgmt-modal-backdrop"
+          onClick={() => setViewingTopic(null)}
+        >
+          <div
+            className="tpc-mgmt-modal-card"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="tpc-mgmt-modal-header">
+              <h2 className="tpc-mgmt-modal-title">{viewingTopic.name}</h2>
+              <button
+                type="button"
+                className="tpc-mgmt-modal-close-top"
+                onClick={() => setViewingTopic(null)}
+              >
+                <span>&lt; Close</span>
+              </button>
+            </div>
+
+            <div className="tpc-mgmt-modal-details-grid">
+              <div className="tpc-mgmt-modal-detail-item">
+                <span className="tpc-mgmt-modal-detail-label">Topic Name:</span>
+                <span>{viewingTopic.name}</span>
+              </div>
+
+              <div className="tpc-mgmt-modal-detail-item">
+                <span className="tpc-mgmt-modal-detail-label">Module:</span>
+                <span>{viewingTopic.module}</span>
+              </div>
+
+              <div className="tpc-mgmt-modal-detail-item">
+                <span className="tpc-mgmt-modal-detail-label">Topic Code:</span>
+                <span>{viewingTopic.code}</span>
+              </div>
+
+              <div className="tpc-mgmt-modal-detail-item">
+                <span className="tpc-mgmt-modal-detail-label">Created:</span>
+                <span>{viewingTopic.createdAt}</span>
+              </div>
+            </div>
+
+            <div className="tpc-mgmt-modal-footer">
+              <button
+                type="button"
+                className="tpc-mgmt-modal-close-btn"
+                onClick={() => setViewingTopic(null)}
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                className="tpc-mgmt-modal-edit-btn"
+                onClick={() => handleOpenEditTopic(viewingTopic)}
+              >
+                Edit
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
