@@ -7,28 +7,29 @@
   min-width: 0;
   min-height: 100vh;
   box-sizing: border-box;
-  background-color: #ffffff;
+  background-color: #f8f9fa;
   padding: 24px 32px 32px 32px;
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
+/* Header & Breadcrumbs */
 .btc-mgmt-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 24px;
 }
 
 .btc-mgmt-title-group {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
 }
 
 .btc-mgmt-heading {
   font-size: 22px;
   font-weight: 700;
-  color: #111827;
+  color: #1f2937;
   margin: 0;
   letter-spacing: -0.02em;
 }
@@ -43,195 +44,95 @@
 
 .btc-mgmt-breadcrumb-separator {
   color: #9ca3af;
-  font-size: 11px;
+  font-size: 12px;
 }
 
-.btc-mgmt-breadcrumb-segment {
-  color: #6b7280;
-}
-
-.btc-mgmt-breadcrumb-current {
-  color: #6b7280;
-}
-
+/* Profile Card */
 .btc-mgmt-profile-card {
   display: flex;
   align-items: center;
   gap: 12px;
-  width: 160px;
-  height: 54px;
-  box-sizing: border-box;
-  padding: 0 16px;
+  padding: 8px 16px;
   background-color: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
 }
 
-.btc-mgmt-profile-icon {
-  font-size: 24px;
-  color: #111827;
-  stroke-width: 2.2;
+.btc-mgmt-profile-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  font-size: 18px;
 }
 
 .btc-mgmt-profile-info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .btc-mgmt-username {
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 600;
   color: #111827;
-  line-height: 1.15;
+  line-height: 1.2;
 }
 
 .btc-mgmt-role {
-  font-size: 11.5px;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 400;
   color: #6b7280;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
-.btc-mgmt-panel {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  background-color: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  padding: 24px 28px;
-  box-sizing: border-box;
-}
-
+/* Outer Toolbar (Tabs + Export) */
 .btc-mgmt-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  gap: 16px;
+  margin-bottom: 20px;
 }
 
 .btc-mgmt-tab-group {
   display: inline-flex;
-  height: 42px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  overflow: hidden;
-  box-sizing: border-box;
-  background-color: #ffffff;
-  flex-shrink: 0;
+  gap: 10px;
 }
 
 .btc-mgmt-tab-btn {
-  height: 100%;
-  width: 130px;
-  display: flex;
+  height: 40px;
+  padding: 0 20px;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   font-size: 14px;
   font-weight: 600;
-  border: none;
-  background: transparent;
-  color: #111827;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #374151;
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  transition: all 0.15s ease;
+}
+
+.btc-mgmt-tab-btn:hover {
+  background-color: #f9fafb;
 }
 
 .btc-mgmt-tab-btn--active {
-  background-color: #e08316;
+  background-color: #f97316;
+  border-color: #f97316;
   color: #ffffff;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 3.5px #f97316;
 }
 
-.btc-mgmt-actions-group {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.btc-mgmt-new-btn-quick {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-  padding: 0 16px;
-  background-color: #e08316;
-  border: none;
-  border-radius: 8px;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: #ffffff;
-  cursor: pointer;
-  transition: background-color 0.15s ease;
-}
-
-.btc-mgmt-new-btn-quick:hover {
-  background-color: #c97310;
-}
-
-.btc-mgmt-search-box {
-  display: flex;
-  align-items: center;
-  position: relative;
-  width: 220px;
-  height: 40px;
-}
-
-.btc-mgmt-search-icon {
-  position: absolute;
-  left: 12px;
-  font-size: 16px;
-  color: #111827;
-  pointer-events: none;
-  stroke-width: 2.2;
-}
-
-.btc-mgmt-search-input {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  padding: 0 12px 0 36px;
-  background-color: #ffffff;
-  border: 1.2px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 13.5px;
-  color: #111827;
-  outline: none;
-}
-
-.btc-mgmt-search-input::placeholder {
-  color: #6b7280;
-}
-
-.btc-mgmt-search-input:focus {
-  border-color: #e08316;
-}
-
-.btc-mgmt-filter-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  height: 40px;
-  padding: 0 16px;
-  background-color: #ffffff;
-  border: 1.2px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: #111827;
-  cursor: pointer;
-  transition: background-color 0.15s ease;
-}
-
-.btc-mgmt-filter-btn:hover {
-  background-color: #f8fafc;
-}
-
-.btc-mgmt-filter-icon {
-  font-size: 15px;
-  color: #111827;
-  stroke-width: 2.2;
+.btc-mgmt-tab-btn--active:hover {
+  background-color: #ea580c;
 }
 
 .btc-mgmt-export-btn {
@@ -240,69 +141,170 @@
   justify-content: center;
   gap: 8px;
   height: 40px;
-  padding: 0 16px;
+  padding: 0 18px;
   background-color: #ffffff;
-  border: 1.2px solid #d1d5db;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
   font-size: 13.5px;
   font-weight: 600;
-  color: #111827;
+  color: #374151;
   cursor: pointer;
   transition: background-color 0.15s ease;
 }
 
 .btc-mgmt-export-btn:hover {
-  background-color: #f8fafc;
+  background-color: #f9fafb;
 }
 
 .btc-mgmt-export-icon {
-  font-size: 15px;
-  color: #111827;
-  stroke-width: 2.2;
+  font-size: 16px;
+  color: #4b5563;
 }
 
+/* Main White Card Panel */
+.btc-mgmt-panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #ffffff;
+  border: 1px solid #eef0f2;
+  border-radius: 14px;
+  padding: 24px 28px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  box-sizing: border-box;
+}
+
+/* Filter & Search Bar inside Card */
+.btc-mgmt-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.btc-mgmt-search-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.btc-mgmt-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 17px;
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+.btc-mgmt-search-input {
+  width: 100%;
+  height: 42px;
+  box-sizing: border-box;
+  padding: 0 14px 0 42px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #111827;
+  background-color: #ffffff;
+  outline: none;
+}
+
+.btc-mgmt-search-input::placeholder {
+  color: #9ca3af;
+}
+
+.btc-mgmt-search-input:focus {
+  border-color: #f97316;
+}
+
+.btc-mgmt-filter-select-wrapper {
+  position: relative;
+  width: 150px;
+  flex-shrink: 0;
+}
+
+.btc-mgmt-filter-select {
+  width: 100%;
+  height: 42px;
+  box-sizing: border-box;
+  padding: 0 34px 0 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #374151;
+  background-color: #ffffff;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.btc-mgmt-filter-select:focus {
+  border-color: #f97316;
+}
+
+.btc-mgmt-select-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 15px;
+  color: #4b5563;
+  pointer-events: none;
+}
+
+/* Empty State */
 .btc-mgmt-content-area {
   display: flex;
   align-items: center;
   justify-content: center;
   flex: 1;
-  min-height: 480px;
+  min-height: 360px;
 }
 
 .btc-mgmt-empty-message {
-  font-size: 21px;
+  font-size: 15px;
   font-weight: 500;
-  color: #7b7f87;
-  letter-spacing: -0.01em;
+  color: #6b7280;
   margin: 0;
   text-align: center;
 }
 
+/* Table Layout */
 .btc-mgmt-table-wrapper {
   display: flex;
   flex-direction: column;
   flex: 1;
-  margin-top: 24px;
-}
-
-.btc-mgmt-table-card {
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  overflow: hidden;
 }
 
 .btc-mgmt-table-header-row {
   display: grid;
-  grid-template-columns: 2.5fr 2fr 1.5fr 1.5fr 1fr;
-  padding: 16px 24px;
-  border-bottom: 1.5px solid #111827;
-  background-color: #ffffff;
+  grid-template-columns: 46px 2.3fr 1.2fr 1.2fr 1.3fr 1.2fr 1.3fr;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  margin-bottom: 4px;
 }
 
 .btc-mgmt-th {
-  font-size: 14.5px;
-  font-weight: 600;
-  color: #111827;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.btc-mgmt-th-center,
+.btc-mgmt-td-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .btc-mgmt-table-body {
@@ -312,54 +314,159 @@
 
 .btc-mgmt-table-row {
   display: grid;
-  grid-template-columns: 2.5fr 2fr 1.5fr 1.5fr 1fr;
+  grid-template-columns: 46px 2.3fr 1.2fr 1.2fr 1.3fr 1.2fr 1.3fr;
   align-items: center;
-  padding: 18px 24px;
-  border-bottom: 1px solid #e5e7eb;
+  padding: 16px;
+  border-bottom: 1px solid #f3f4f6;
   background-color: #ffffff;
+  transition: background-color 0.15s ease;
+}
+
+.btc-mgmt-table-row:hover {
+  background-color: #fafafa;
 }
 
 .btc-mgmt-td {
-  font-size: 14px;
+  font-size: 13.5px;
+  color: #374151;
+}
+
+/* Batch Name, Avatar & Sub-ID */
+.btc-mgmt-batch-cell {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.btc-mgmt-batch-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: #ffedd5;
+  color: #ea580c;
+  font-size: 13.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btc-mgmt-batch-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.btc-mgmt-batch-name-text {
+  font-size: 13.5px;
+  font-weight: 700;
   color: #111827;
+  text-transform: uppercase;
 }
 
-.btc-mgmt-status-active {
+.btc-mgmt-batch-id-sub {
+  font-size: 11.5px;
+  font-weight: 400;
+  color: #9ca3af;
+}
+
+/* Pills & Badges */
+.btc-mgmt-branch-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background-color: #eff6ff;
   color: #2563eb;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: lowercase;
 }
 
+.btc-mgmt-status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.btc-mgmt-status-pill--active {
+  background-color: #ecfdf5;
+  color: #10b981;
+}
+
+.btc-mgmt-status-pill--upcoming {
+  background-color: #fffbeb;
+  color: #d97706;
+}
+
+.btc-mgmt-status-pill--completed {
+  background-color: #f3f4f6;
+  color: #4b5563;
+}
+
+.btc-mgmt-interns-count-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.btc-mgmt-interns-count {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.btc-mgmt-interns-more {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.btc-mgmt-date-text {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Text Action Links */
 .btc-mgmt-col-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  justify-content: center;
+  gap: 12px;
 }
 
-.btc-mgmt-action-btn {
+.btc-mgmt-text-action {
   background: none;
   border: none;
   padding: 0;
+  font-size: 13px;
+  font-weight: 600;
   cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
   transition: opacity 0.15s ease;
 }
 
-.btc-mgmt-action-btn:hover {
-  opacity: 0.7;
+.btc-mgmt-text-action:hover {
+  text-decoration: underline;
+  opacity: 0.85;
 }
 
-.btc-mgmt-action-view,
-.btc-mgmt-action-edit {
-  color: #111827;
+.btc-mgmt-text-action--view {
+  color: #2563eb;
 }
 
-.btc-mgmt-action-delete {
+.btc-mgmt-text-action--edit {
+  color: #f97316;
+}
+
+.btc-mgmt-text-action--delete {
   color: #dc2626;
 }
 
+/* Pagination */
 .btc-mgmt-pagination-bar {
   display: flex;
   align-items: center;
@@ -370,9 +477,9 @@
 }
 
 .btc-mgmt-pagination-text {
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 600;
-  color: #111827;
+  color: #4b5563;
 }
 
 .btc-mgmt-pagination-controls {
@@ -386,84 +493,40 @@
   justify-content: center;
   width: 28px;
   height: 28px;
-  background-color: #cfd4dc;
-  border: none;
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
   border-radius: 6px;
-  color: #64748b;
+  color: #9ca3af;
   cursor: not-allowed;
   font-size: 15px;
 }
 
-.btc-mgmt-form-layout,
-.btc-mgmt-view-layout {
+/* Form Layout (New Batch & Edit Batch - Matching Screenshot 2 & 3) */
+.btc-mgmt-form-layout {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex: 1;
-  min-height: 520px;
-}
-
-.btc-mgmt-view-topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.btc-mgmt-view-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #111827;
-  margin: 0;
-  letter-spacing: -0.02em;
-}
-
-.btc-mgmt-back-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  height: 38px;
-  padding: 0 16px;
-  background-color: #ffffff;
-  border: 1px solid #111827;
-  border-radius: 8px;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: #111827;
-  cursor: pointer;
-  transition: background-color 0.15s ease;
-}
-
-.btc-mgmt-back-btn:hover {
-  background-color: #f8fafc;
-}
-
-.btc-mgmt-back-icon {
-  font-size: 16px;
-  stroke-width: 2.2;
 }
 
 .btc-mgmt-form-body {
   display: flex;
   flex-direction: column;
-  padding-top: 24px;
 }
 
 .btc-mgmt-section-heading {
   font-size: 16px;
   font-weight: 700;
-  color: #111827;
-  margin: 0 0 16px 0;
+  color: #1f2937;
+  margin: 0 0 20px 0;
 }
 
 .btc-mgmt-section-heading--intern {
-  margin-top: 14px;
+  margin-top: 8px;
 }
 
 .btc-mgmt-section-heading--added {
-  margin-top: 24px;
-  margin-bottom: 12px;
+  margin-top: 16px;
 }
 
 .btc-mgmt-form-row {
@@ -473,12 +536,10 @@
   margin-bottom: 20px;
 }
 
-.btc-mgmt-form-row--half {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.btc-mgmt-form-row--two-col {
-  grid-template-columns: repeat(3, 1fr);
+.btc-mgmt-form-full-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
 }
 
 .btc-mgmt-input-group {
@@ -488,59 +549,43 @@
 }
 
 .btc-mgmt-label {
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 600;
-  color: #111827;
+  color: #374151;
+}
+
+.btc-mgmt-required-star {
+  color: #ef4444;
+  margin-left: 2px;
 }
 
 .btc-mgmt-text-input {
   width: 100%;
-  height: 44px;
+  height: 42px;
   box-sizing: border-box;
   padding: 0 14px;
-  border: 1px solid #9ca3af;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
-  font-size: 13.5px;
+  font-size: 14px;
   color: #111827;
   outline: none;
   background-color: #ffffff;
+  transition: border-color 0.15s ease;
 }
 
 .btc-mgmt-text-input::placeholder {
-  color: #6b7280;
+  color: #9ca3af;
 }
 
 .btc-mgmt-text-input:focus {
-  border-color: #e08316;
+  border-color: #f97316;
 }
 
-.btc-mgmt-text-input--disabled {
-  background-color: #d1d5db;
-  border-color: #9ca3af;
+.btc-mgmt-text-input--readonly {
+  background-color: #f9fafb;
+  border-color: #e5e7eb;
   color: #6b7280;
-  cursor: not-allowed;
-}
-
-.btc-mgmt-static-box {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 44px;
-  box-sizing: border-box;
-  padding: 0 14px;
-  background-color: #d1d5db;
-  border: 1px solid #9ca3af;
-  border-radius: 8px;
-  font-size: 13.5px;
-  color: #111827;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.btc-mgmt-static-box--status {
-  color: #2563eb;
-  font-weight: 500;
+  cursor: default;
 }
 
 .btc-mgmt-select-wrapper {
@@ -550,12 +595,12 @@
 
 .btc-mgmt-select-input {
   width: 100%;
-  height: 44px;
+  height: 42px;
   box-sizing: border-box;
   padding: 0 38px 0 14px;
-  border: 1px solid #9ca3af;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
-  font-size: 13.5px;
+  font-size: 14px;
   color: #111827;
   background-color: #ffffff;
   appearance: none;
@@ -564,149 +609,199 @@
   outline: none;
 }
 
-.btc-mgmt-select-input--blue {
-  color: #2563eb;
-  font-weight: 500;
-}
-
 .btc-mgmt-select-input:focus {
-  border-color: #e08316;
+  border-color: #f97316;
 }
 
-.btc-mgmt-select-arrow {
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 16px;
-  color: #374151;
-  pointer-events: none;
-}
-
-.btc-mgmt-search-input-wrapper {
+/* Search Intern Input with Left Icon */
+.btc-mgmt-intern-search-wrapper {
   position: relative;
   width: 100%;
 }
 
-.btc-mgmt-text-input--with-icon {
-  padding-right: 38px;
-}
-
-.btc-mgmt-input-search-icon {
+.btc-mgmt-intern-search-icon {
   position: absolute;
-  right: 14px;
+  left: 14px;
   top: 50%;
   transform: translateY(-50%);
   font-size: 16px;
-  color: #111827;
+  color: #9ca3af;
   pointer-events: none;
-  stroke-width: 2.2;
 }
 
+.btc-mgmt-text-input--left-icon {
+  padding-left: 40px;
+}
+
+.btc-mgmt-text-input--left-icon:disabled {
+  background-color: #f9fafb;
+  cursor: not-allowed;
+}
+
+/* Search Dropdown Autocomplete */
+.btc-mgmt-intern-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+  z-index: 20;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.btc-mgmt-intern-dropdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  color: #111827;
+  cursor: pointer;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.btc-mgmt-intern-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.btc-mgmt-intern-dropdown-item:hover {
+  background-color: #fff7ed;
+}
+
+.btc-mgmt-intern-dropdown-meta {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Right-Aligned Peach/Orange Add Intern Button (Matching Screenshot 2 & 3) */
 .btc-mgmt-add-intern-action {
   display: flex;
-  margin-top: 4px;
+  justify-content: flex-end;
+  margin-bottom: 12px;
 }
 
 .btc-mgmt-add-intern-btn {
-  height: 42px;
-  padding: 0 24px;
-  background-color: #1e1e1e;
+  height: 38px;
+  padding: 0 20px;
+  background-color: #fdba74;
   border: none;
   border-radius: 8px;
   font-size: 13.5px;
   font-weight: 600;
   color: #ffffff;
-  cursor: pointer;
+  cursor: not-allowed;
   transition: background-color 0.15s ease;
 }
 
-.btc-mgmt-add-intern-btn:hover {
-  background-color: #333333;
+.btc-mgmt-add-intern-btn--ready {
+  background-color: #f97316;
+  cursor: pointer;
+}
+
+.btc-mgmt-add-intern-btn--ready:hover {
+  background-color: #ea580c;
+}
+
+/* Added Interns Section */
+.btc-mgmt-added-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 16px;
+  font-size: 14px;
+  color: #6b7280;
 }
 
 .btc-mgmt-added-interns-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 14px;
 }
 
-.btc-mgmt-intern-bar {
+.btc-mgmt-intern-chip {
   display: flex;
   align-items: center;
-  height: 44px;
-  box-sizing: border-box;
-  padding: 0 16px;
-  background-color: #d1d5db;
-  border: 1px solid #9ca3af;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
+}
+
+.btc-mgmt-intern-chip-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.btc-mgmt-intern-chip-name {
   font-size: 13.5px;
-  font-weight: 500;
+  font-weight: 600;
   color: #111827;
+}
+
+.btc-mgmt-intern-chip-sub {
+  font-size: 12px;
+  color: #6b7280;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.btc-mgmt-intern-bar--editable {
-  justify-content: space-between;
-}
-
 .btc-mgmt-intern-remove-btn {
   background: none;
   border: none;
-  padding: 0;
+  padding: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   color: #dc2626;
-  font-size: 17px;
-  stroke-width: 2.5;
-  transition: transform 0.1s ease;
+  font-size: 16px;
 }
 
-.btc-mgmt-intern-remove-btn:hover {
-  transform: scale(1.15);
-}
-
+/* Form Footer Buttons */
 .btc-mgmt-form-footer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 14px;
-  padding-top: 32px;
-  margin-top: auto;
+  gap: 12px;
+  padding-top: 28px;
+  margin-top: 12px;
 }
 
 .btc-mgmt-cancel-btn {
-  height: 44px;
-  width: 130px;
+  height: 40px;
+  padding: 0 22px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
-  border: 1.5px solid #d91b24;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 600;
-  color: #d91b24;
+  color: #374151;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: background-color 0.15s ease;
 }
 
 .btc-mgmt-cancel-btn:hover {
-  background-color: #fef2f2;
+  background-color: #f9fafb;
 }
 
 .btc-mgmt-submit-btn {
-  height: 44px;
-  min-width: 130px;
-  padding: 0 24px;
+  height: 40px;
+  padding: 0 22px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e08316;
+  background-color: #f97316;
   border: none;
   border-radius: 8px;
   font-size: 14px;
@@ -717,28 +812,215 @@
 }
 
 .btc-mgmt-submit-btn:hover {
-  background-color: #c97310;
+  background-color: #ea580c;
 }
 
+/* View Batch Modal Overlay */
+.btc-mgmt-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(17, 24, 39, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.btc-mgmt-modal-card {
+  width: 100%;
+  max-width: 660px;
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 28px 32px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  animation: btcModalFadeIn 0.16s ease-out;
+}
+
+@keyframes btcModalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.btc-mgmt-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 18px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.btc-mgmt-modal-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.btc-mgmt-modal-close-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 14px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.btc-mgmt-modal-close-top:hover {
+  background-color: #f9fafb;
+}
+
+.btc-mgmt-modal-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 28px;
+  margin-bottom: 22px;
+}
+
+.btc-mgmt-modal-detail-item {
+  font-size: 13.5px;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.btc-mgmt-modal-detail-label {
+  font-weight: 700;
+  color: #1f2937;
+  margin-right: 6px;
+}
+
+.btc-mgmt-modal-subcard {
+  border: 1px solid #eef0f2;
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-bottom: 24px;
+  background-color: #fafafa;
+}
+
+.btc-mgmt-modal-subcard-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  font-style: italic;
+  color: #f97316;
+  margin: 0 0 10px 0;
+}
+
+.btc-mgmt-modal-subcard-text {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.btc-mgmt-modal-interns-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.btc-mgmt-modal-intern-tag {
+  padding: 8px 12px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.btc-mgmt-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.btc-mgmt-modal-close-btn {
+  height: 38px;
+  padding: 0 20px;
+  background-color: #f3f4f6;
+  border: none;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.btc-mgmt-modal-close-btn:hover {
+  background-color: #e5e7eb;
+}
+
+.btc-mgmt-modal-edit-btn {
+  height: 38px;
+  padding: 0 22px;
+  background-color: #f97316;
+  border: none;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.btc-mgmt-modal-edit-btn:hover {
+  background-color: #ea580c;
+}
+
+/* Responsive Breakpoints */
 @media (max-width: 1024px) {
-  .btc-mgmt-toolbar {
+  .btc-mgmt-table-header-row {
+    display: none;
+  }
+
+  .btc-mgmt-table-row {
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 10px;
+    padding: 16px;
   }
 
-  .btc-mgmt-actions-group {
+  .btc-mgmt-td {
     width: 100%;
-    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .btc-mgmt-search-box {
-    flex: 1;
-    min-width: 180px;
+  .btc-mgmt-td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #6b7280;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  .btc-mgmt-col-actions {
+    justify-content: flex-end;
+    padding-top: 8px;
+    border-top: 1px dashed #e5e7eb;
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .btc-mgmt-container {
     padding: 16px;
   }
@@ -753,66 +1035,25 @@
     align-self: flex-end;
   }
 
-  .btc-mgmt-panel {
-    padding: 16px;
-  }
-
-  .btc-mgmt-actions-group {
+  .btc-mgmt-toolbar,
+  .btc-mgmt-filter-bar {
     flex-direction: column;
-    width: 100%;
+    align-items: stretch;
   }
 
-  .btc-mgmt-new-btn-quick,
-  .btc-mgmt-search-box,
-  .btc-mgmt-filter-btn,
-  .btc-mgmt-export-btn {
+  .btc-mgmt-filter-select-wrapper {
     width: 100%;
   }
 
   .btc-mgmt-form-row,
-  .btc-mgmt-form-row--half,
-  .btc-mgmt-form-row--two-col,
-  .btc-mgmt-added-interns-grid {
+  .btc-mgmt-added-interns-grid,
+  .btc-mgmt-modal-details-grid,
+  .btc-mgmt-modal-interns-list {
     grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .btc-mgmt-table-header-row {
-    display: none;
-  }
-
-  .btc-mgmt-table-row {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    padding: 14px;
-  }
-
-  .btc-mgmt-td {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .btc-mgmt-td::before {
-    content: attr(data-label);
-    font-weight: 600;
-    color: #4b5563;
-    font-size: 12.5px;
-  }
-
-  .btc-mgmt-col-actions {
-    justify-content: flex-end;
-    margin-top: 8px;
-    padding-top: 8px;
-    border-top: 1px dashed #e5e7eb;
   }
 
   .btc-mgmt-form-footer {
     flex-direction: column-reverse;
-    gap: 10px;
   }
 
   .btc-mgmt-cancel-btn,
