@@ -1,0 +1,592 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+.wk-sched-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #f8f9fa;
+  padding: 24px 32px 32px 32px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Header & Breadcrumbs */
+.wk-sched-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.wk-sched-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wk-sched-heading {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.wk-sched-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.wk-sched-breadcrumb-separator {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+/* Profile Card */
+.wk-sched-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.wk-sched-profile-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  font-size: 18px;
+}
+
+.wk-sched-profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.wk-sched-username {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.wk-sched-role {
+  font-size: 12px;
+  font-weight: 400;
+  color: #6b7280;
+  line-height: 1.2;
+}
+
+/* Two-Column Workspace */
+.wk-sched-workspace {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Left Sidebar: Batch's */
+.wk-sched-batch-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  background-color: #ffffff;
+  border: 1px solid #eef0f2;
+  border-radius: 14px;
+  padding: 20px 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  box-sizing: border-box;
+}
+
+.wk-sched-sidebar-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 6px 0;
+}
+
+.wk-sched-sidebar-subtitle {
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.45;
+  margin: 0 0 14px 0;
+}
+
+.wk-sched-sidebar-search {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.wk-sched-sidebar-search-icon {
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+.wk-sched-sidebar-search-input {
+  width: 100%;
+  height: 36px;
+  box-sizing: border-box;
+  padding: 0 12px 0 32px;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 12.5px;
+  color: #111827;
+  outline: none;
+}
+
+.wk-sched-sidebar-search-input:focus {
+  border-color: #f97316;
+  background-color: #ffffff;
+}
+
+.wk-sched-batch-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 540px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.wk-sched-batch-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #374151;
+  cursor: grab;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.wk-sched-batch-pill:hover {
+  border-color: #d1d5db;
+  transform: translateY(-1px);
+}
+
+.wk-sched-batch-pill:active {
+  cursor: grabbing;
+}
+
+.wk-sched-batch-pill--assigned {
+  background-color: #dcfce7;
+  border-color: #bbf7d0;
+  color: #15803d;
+}
+
+.wk-sched-batch-eye-btn {
+  background: none;
+  border: none;
+  padding: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  opacity: 0.7;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.wk-sched-batch-eye-btn:hover {
+  opacity: 1;
+}
+
+/* Right Main Schedule Panel */
+.wk-sched-main-panel {
+  flex: 1;
+  min-width: 0;
+  background-color: #ffffff;
+  border: 1px solid #eef0f2;
+  border-radius: 14px;
+  padding: 22px 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  box-sizing: border-box;
+}
+
+.wk-sched-panel-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.wk-sched-panel-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.wk-sched-panel-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.wk-sched-panel-subtitle {
+  font-size: 12.5px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.wk-sched-controls-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.wk-sched-select-wrapper {
+  position: relative;
+  width: 130px;
+}
+
+.wk-sched-select {
+  width: 100%;
+  height: 38px;
+  box-sizing: border-box;
+  padding: 0 30px 0 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  background-color: #ffffff;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.wk-sched-select-arrow {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #6b7280;
+  pointer-events: none;
+}
+
+.wk-sched-date-input {
+  height: 38px;
+  box-sizing: border-box;
+  padding: 0 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #374151;
+  background-color: #ffffff;
+  outline: none;
+}
+
+.wk-sched-to-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 38px;
+  padding: 0 14px;
+  background-color: #f3f4f6;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.wk-sched-export-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 14px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+}
+
+.wk-sched-export-btn:hover {
+  background-color: #f9fafb;
+}
+
+.wk-sched-add-next-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 38px;
+  padding: 0 16px;
+  background-color: #f97316;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.wk-sched-add-next-btn:hover {
+  background-color: #ea580c;
+}
+
+/* Scrollable Grid Table */
+.wk-sched-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+.wk-sched-table {
+  width: 100%;
+  min-width: 1180px;
+  border-collapse: collapse;
+  background-color: #ffffff;
+}
+
+.wk-sched-thead th {
+  background-color: #f97316;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: left;
+  padding: 12px 14px;
+  white-space: nowrap;
+}
+
+.wk-sched-tbody td {
+  border-bottom: 1px solid #f3f4f6;
+  border-right: 1px solid #f3f4f6;
+  padding: 12px 14px;
+  vertical-align: middle;
+}
+
+.wk-sched-mentor-cell {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #1f2937;
+  text-transform: uppercase;
+  vertical-align: top !important;
+  padding-top: 18px !important;
+  width: 165px;
+  background-color: #ffffff;
+}
+
+.wk-sched-time-cell {
+  font-size: 12px;
+  font-weight: 500;
+  color: #4b5563;
+  white-space: nowrap;
+  width: 135px;
+}
+
+.wk-sched-no-timings {
+  font-size: 12.5px;
+  font-style: italic;
+  color: #9ca3af;
+}
+
+/* Dropzone Cell */
+.wk-sched-drop-cell {
+  min-width: 155px;
+  transition: background-color 0.15s ease;
+}
+
+.wk-sched-drop-cell--over {
+  background-color: #fff7ed;
+}
+
+.wk-sched-drop-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 46px;
+  padding: 6px 8px;
+  border: 1px dashed #e5e7eb;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.wk-sched-empty-slot-text {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.wk-sched-assigned-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+}
+
+.wk-sched-assigned-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background-color: #dcfce7;
+  color: #15803d;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.wk-sched-chip-remove {
+  background: none;
+  border: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  color: #15803d;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.wk-sched-chip-remove:hover {
+  color: #dc2626;
+}
+
+.wk-sched-note-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 11px;
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+.wk-sched-note-trigger:hover {
+  color: #f97316;
+}
+
+.wk-sched-note-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 3px 6px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 11px;
+  outline: none;
+}
+
+/* Subject Cell */
+.wk-sched-subject-cell {
+  min-width: 145px;
+}
+
+.wk-sched-subject-select {
+  width: 100%;
+  height: 34px;
+  padding: 0 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #4b5563;
+  background-color: #ffffff;
+  outline: none;
+  cursor: pointer;
+}
+
+.wk-sched-subject-select:focus {
+  border-color: #f97316;
+}
+
+/* Quick Batch View Modal */
+.wk-sched-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(17, 24, 39, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.wk-sched-modal-card {
+  width: 100%;
+  max-width: 440px;
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.wk-sched-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.wk-sched-modal-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.wk-sched-modal-close {
+  background: #f3f4f6;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+}
+
+.wk-sched-modal-row {
+  font-size: 13.5px;
+  color: #4b5563;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 960px) {
+  .wk-sched-workspace {
+    flex-direction: column;
+  }
+
+  .wk-sched-batch-sidebar {
+    width: 100%;
+  }
+}
