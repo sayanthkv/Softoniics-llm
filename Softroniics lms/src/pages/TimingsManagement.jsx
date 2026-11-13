@@ -11,6 +11,7 @@ const TimingsManagement = () => {
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
   const [branchName, setBranchName] = useState('');
+  const [timeError, setTimeError] = useState('');
 
   const [timings, setTimings] = useState([
     { id: 1, start: '08:30', end: '11:00', label: '08:30 AM - 11:00 AM', branch: 'calicut' },
@@ -37,6 +38,7 @@ const TimingsManagement = () => {
     setEndTime('');
     setBranchName('');
     setEditingId(null);
+    setTimeError('');
   };
 
   const handleOpenNew = () => {
@@ -49,12 +51,36 @@ const TimingsManagement = () => {
     setStartTime(item.start);
     setEndTime(item.end);
     setBranchName(item.branch);
+    setTimeError('');
     setActiveTab('edit-timing');
+  };
+
+  const handleStartTimeChange = (value) => {
+    setStartTime(value);
+    if (endTime && value >= endTime) {
+      setTimeError('End time must be later than start time.');
+    } else {
+      setTimeError('');
+    }
+  };
+
+  const handleEndTimeChange = (value) => {
+    setEndTime(value);
+    if (startTime && value <= startTime) {
+      setTimeError('End time must be later than start time.');
+    } else {
+      setTimeError('');
+    }
   };
 
   const handleSaveTiming = (e) => {
     e.preventDefault();
     if (!startTime || !endTime || !branchName) return;
+
+    if (endTime <= startTime) {
+      setTimeError('End time must be later than start time.');
+      return;
+    }
 
     const label = `${formatTo12Hour(startTime)} - ${formatTo12Hour(endTime)}`;
 
@@ -71,6 +97,7 @@ const TimingsManagement = () => {
       ]);
     }
 
+    setBranchFilter(branchName);
     resetForm();
     setActiveTab('timings');
   };
@@ -184,7 +211,7 @@ const TimingsManagement = () => {
                   type="time"
                   className="tmg-mgmt-time-input"
                   value={startTime}
-                  onChange={(e) => setStartTime(e.target.value)}
+                  onChange={(e) => handleStartTimeChange(e.target.value)}
                   required
                 />
               </div>
@@ -196,10 +223,17 @@ const TimingsManagement = () => {
                 <input
                   type="time"
                   className="tmg-mgmt-time-input"
+                  min={startTime || undefined}
                   value={endTime}
-                  onChange={(e) => setEndTime(e.target.value)}
+                  onChange={(e) => handleEndTimeChange(e.target.value)}
+                  style={timeError ? { borderColor: '#dc2626' } : undefined}
                   required
                 />
+                {timeError && (
+                  <span style={{ color: '#dc2626', fontSize: '12px', fontWeight: 500, marginTop: '4px' }}>
+                    {timeError}
+                  </span>
+                )}
               </div>
 
               <div className="tmg-mgmt-input-group">
@@ -238,7 +272,11 @@ const TimingsManagement = () => {
               >
                 Cancel
               </button>
-              <button type="submit" className="tmg-mgmt-submit-btn">
+              <button
+                type="submit"
+                className="tmg-mgmt-submit-btn"
+                disabled={Boolean(timeError)}
+              >
                 {activeTab === 'edit-timing' ? 'Save Timing' : 'Create Timing'}
               </button>
             </div>
