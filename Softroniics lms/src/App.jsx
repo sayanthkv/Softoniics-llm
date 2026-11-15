@@ -5,9 +5,10 @@ import BatchManagement from './pages/BatchManagement';
 import TimingsManagement from './pages/TimingsManagement';
 import WeeklySchedule from './pages/WeeklySchedule';
 import MentorBatches from './pages/MentorBatches';
+import InternWeeklySchedule from './pages/InternWeeklySchedule';
 
 function App() {
-  const [currentSection, setCurrentSection] = useState('weekly-schedule');
+  const [currentSection, setCurrentSection] = useState('intern-schedule');
 
   const navItems = [
     { key: 'modules', label: 'Modules' },
@@ -16,6 +17,7 @@ function App() {
     { key: 'timings', label: 'Timings' },
     { key: 'weekly-schedule', label: 'Weekly Schedule' },
     { key: 'mentor-batches', label: 'Mentor Batches' },
+    { key: 'intern-schedule', label: 'Intern Schedule' },
   ];
 
   return (
@@ -63,6 +65,7 @@ function App() {
       {currentSection === 'timings' && <TimingsManagement />}
       {currentSection === 'weekly-schedule' && <WeeklySchedule />}
       {currentSection === 'mentor-batches' && <MentorBatches />}
+      {currentSection === 'intern-schedule' && <InternWeeklySchedule />}
     </div>
   );
 }

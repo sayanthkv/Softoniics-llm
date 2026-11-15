@@ -51,7 +51,7 @@ const WeeklySchedule = () => {
   const assignedBatchNames = useMemo(() => {
     const set = new Set(['MERN_batch01', 'MERN_batch_02']);
     Object.values(scheduleData).forEach((entry) => {
-      (entry.batches || []).forEach((b) => set.add(b));
+      if (entry.batch) set.add(entry.batch);
     });
     return set;
   }, [scheduleData]);
@@ -64,6 +64,7 @@ const WeeklySchedule = () => {
     e.dataTransfer.setData('text/plain', batchName);
   };
 
+  // Allows only ONE batch per time slot (replaces any existing batch in that slot)
   const handleDropBatch = (e, cellKey) => {
     e.preventDefault();
     setDragOverCell(null);
@@ -71,19 +72,18 @@ const WeeklySchedule = () => {
     if (!batchName) return;
 
     setScheduleData((prev) => {
-      const existing = prev[cellKey] || { batches: [], subject: '', note: '' };
-      if (existing.batches.includes(batchName)) return prev;
+      const existing = prev[cellKey] || { batch: null, subject: '', note: '' };
       return {
         ...prev,
         [cellKey]: {
           ...existing,
-          batches: [...existing.batches, batchName],
+          batch: batchName,
         },
       };
     });
   };
 
-  const handleRemoveAssignedBatch = (cellKey, batchName) => {
+  const handleRemoveAssignedBatch = (cellKey) => {
     setScheduleData((prev) => {
       const existing = prev[cellKey];
       if (!existing) return prev;
@@ -91,7 +91,7 @@ const WeeklySchedule = () => {
         ...prev,
         [cellKey]: {
           ...existing,
-          batches: existing.batches.filter((b) => b !== batchName),
+          batch: null,
         },
       };
     });
@@ -99,7 +99,7 @@ const WeeklySchedule = () => {
 
   const handleSubjectChange = (cellKey, subject) => {
     setScheduleData((prev) => {
-      const existing = prev[cellKey] || { batches: [], subject: '', note: '' };
+      const existing = prev[cellKey] || { batch: null, subject: '', note: '' };
       return {
         ...prev,
         [cellKey]: { ...existing, subject },
@@ -109,7 +109,7 @@ const WeeklySchedule = () => {
 
   const handleNoteChange = (cellKey, note) => {
     setScheduleData((prev) => {
-      const existing = prev[cellKey] || { batches: [], subject: '', note: '' };
+      const existing = prev[cellKey] || { batch: null, subject: '', note: '' };
       return {
         ...prev,
         [cellKey]: { ...existing, note },
@@ -287,7 +287,7 @@ const WeeklySchedule = () => {
                       {days.map((day) => {
                         const cellKey = `${mentor.id}_${slot}_${day}`;
                         const cellData = scheduleData[cellKey] || {
-                          batches: [],
+                          batch: null,
                           subject: '',
                           note: '',
                         };
@@ -307,26 +307,22 @@ const WeeklySchedule = () => {
                               onDrop={(e) => handleDropBatch(e, cellKey)}
                             >
                               <div className="wk-sched-drop-box">
-                                {cellData.batches.length === 0 ? (
+                                {!cellData.batch ? (
                                   <span className="wk-sched-empty-slot-text">
                                     No batches assigned
                                   </span>
                                 ) : (
                                   <div className="wk-sched-assigned-tags">
-                                    {cellData.batches.map((bName) => (
-                                      <span key={bName} className="wk-sched-assigned-chip">
-                                        {bName}
-                                        <button
-                                          type="button"
-                                          className="wk-sched-chip-remove"
-                                          onClick={() =>
-                                            handleRemoveAssignedBatch(cellKey, bName)
-                                          }
-                                        >
-                                          <LuX />
-                                        </button>
-                                      </span>
-                                    ))}
+                                    <span className="wk-sched-assigned-chip">
+                                      {cellData.batch}
+                                      <button
+                                        type="button"
+                                        className="wk-sched-chip-remove"
+                                        onClick={() => handleRemoveAssignedBatch(cellKey)}
+                                      >
+                                        <LuX />
+                                      </button>
+                                    </span>
                                   </div>
                                 )}
 

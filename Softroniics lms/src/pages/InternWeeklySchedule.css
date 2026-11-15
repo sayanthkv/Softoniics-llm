@@ -1,0 +1,494 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+.int-sched-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #f8fafc;
+  padding: 24px 32px 32px 32px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Header */
+.int-sched-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.int-sched-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.int-sched-heading {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.int-sched-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.int-sched-breadcrumb-sep {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.int-sched-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 155px;
+  height: 54px;
+  padding: 0 16px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.int-sched-profile-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: #e2e8f0;
+  color: #475569;
+  font-size: 18px;
+}
+
+.int-sched-profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.int-sched-username {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.2;
+}
+
+.int-sched-role {
+  font-size: 12px;
+  font-weight: 500;
+  color: #64748b;
+  line-height: 1.2;
+}
+
+/* Top Banner Card */
+.int-sched-banner-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 18px 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+}
+
+.int-sched-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.int-sched-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.int-sched-icon-box--orange {
+  background-color: #fff7ed;
+  border: 1px solid #fed7aa;
+  color: #ea580c;
+}
+
+.int-sched-banner-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 2px 0;
+}
+
+.int-sched-banner-subtitle {
+  font-size: 12.5px;
+  color: #64748b;
+  margin: 0;
+}
+
+.int-sched-banner-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.int-sched-date-input {
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1e293b;
+  background-color: #ffffff;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+}
+
+.int-sched-date-input:focus {
+  border-color: #e08316;
+}
+
+.int-sched-to-pill {
+  display: inline-flex;
+  align-items: center;
+  height: 38px;
+  padding: 0 14px;
+  background-color: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #c2410c;
+  white-space: nowrap;
+}
+
+.int-sched-download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  color: #334155;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.int-sched-download-btn:hover {
+  background-color: #f1f5f9;
+}
+
+/* Main Split Grid */
+.int-sched-grid {
+  display: grid;
+  grid-template-columns: 440px 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.int-sched-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.int-sched-right-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.int-sched-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 22px 24px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+  box-sizing: border-box;
+}
+
+/* Left Top: Intern Profile Card */
+.int-sched-intern-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.int-sched-intern-avatar-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  background-color: #ffedd5;
+  flex-shrink: 0;
+}
+
+.int-sched-intern-avatar-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #ea580c;
+  color: #ea580c;
+  font-size: 16px;
+}
+
+.int-sched-intern-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.int-sched-role-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background-color: #ffedd5;
+  color: #c2410c;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.int-sched-intern-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.int-sched-intern-email {
+  font-size: 12.5px;
+  color: #64748b;
+  margin: 0;
+}
+
+.int-sched-stats-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.int-sched-stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 12px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  gap: 4px;
+}
+
+.int-sched-stat-num {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.int-sched-stat-num--blue {
+  color: #2563eb;
+}
+
+.int-sched-stat-num--green {
+  color: #16a34a;
+}
+
+.int-sched-stat-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.03em;
+}
+
+/* Left Bottom: My Batches */
+.int-sched-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.int-sched-card-header--bordered {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.int-sched-mini-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.int-sched-mini-icon--blue {
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #2563eb;
+}
+
+.int-sched-mini-icon--green {
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #16a34a;
+}
+
+.int-sched-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.int-sched-batches-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.int-sched-batch-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.int-sched-batch-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.int-sched-batch-branch {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* Right Column: Weekly Schedule Timeline */
+.int-sched-timeline-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 360px;
+}
+
+.int-sched-empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 40px 16px;
+}
+
+.int-sched-empty-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748b;
+  margin: 0;
+  text-align: center;
+}
+
+.int-sched-slots-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.int-sched-slot-card {
+  padding: 14px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background-color: #f8fafc;
+}
+
+.int-sched-slot-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 700;
+  color: #e08316;
+  margin-bottom: 4px;
+}
+
+.int-sched-slot-subject {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.int-sched-slot-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1100px) {
+  .int-sched-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .int-sched-container {
+    padding: 16px;
+  }
+
+  .int-sched-header {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .int-sched-profile-card {
+    align-self: flex-end;
+  }
+
+  .int-sched-banner-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .int-sched-banner-controls {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .int-sched-date-input {
+    flex: 1;
+  }
+}
