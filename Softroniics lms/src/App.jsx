@@ -6,9 +6,10 @@ import TimingsManagement from './pages/TimingsManagement';
 import WeeklySchedule from './pages/WeeklySchedule';
 import MentorBatches from './pages/MentorBatches';
 import InternWeeklySchedule from './pages/InternWeeklySchedule';
+import WeeklyCard from './pages/WeeklyCard';
 
 function App() {
-  const [currentSection, setCurrentSection] = useState('intern-schedule');
+  const [currentSection, setCurrentSection] = useState('weekly-card');
 
   const navItems = [
     { key: 'modules', label: 'Modules' },
@@ -18,6 +19,7 @@ function App() {
     { key: 'weekly-schedule', label: 'Weekly Schedule' },
     { key: 'mentor-batches', label: 'Mentor Batches' },
     { key: 'intern-schedule', label: 'Intern Schedule' },
+    { key: 'weekly-card', label: 'Weekly Card' },
   ];
 
   return (
@@ -66,6 +68,7 @@ function App() {
       {currentSection === 'weekly-schedule' && <WeeklySchedule />}
       {currentSection === 'mentor-batches' && <MentorBatches />}
       {currentSection === 'intern-schedule' && <InternWeeklySchedule />}
+      {currentSection === 'weekly-card' && <WeeklyCard />}
     </div>
   );
 }
